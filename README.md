@@ -131,13 +131,13 @@ The major capabilites of the engine are listed below.<br>
 
 ## Structure of the Data
 Each song contains the following data metadata.
-  1. title
-  2. artist
-  3. genre 
-  4. writer
-  5. music
-  6. visits
-  7. lyrics <br>
+  1. title - name ofthe song
+  2. artist - singer of the sonh
+  3. genre - list contains genres
+  4. writer - composer of the somg
+  5. music - musician of the song
+  6. visits - no of visits for the song in original site
+  7. lyrics - lyric (each line seperated by a \n character)<br>
  Data is scraped from the [https://sinhalasongbook.com/](https://sinhalasongbook.com/) site for educational purposes and all the English metadata fields were translated to Sinhala using the Google Translate API and mtranslate python library.
 
 ## Indexing and Querying Techniques
@@ -149,4 +149,4 @@ Eg: If the phrase contains a number, do a range query and sort the result by vis
 ### Boosting
 Boosting has been used as the main query optimization technique. Each field of a search is boosted by a certain value based on the keywords present in the search phrase.
 
-Eg: If the phrase contains the word “ගැයූ" boost the writer field
+Eg: If the phrase contains the word “ලියූ" boost the writer field
