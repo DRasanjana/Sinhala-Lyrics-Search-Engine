@@ -132,9 +132,9 @@ Data is scraped from the [https://sinhalasongbook.com/](https://sinhalasongbook.
 
 ## Querying Techniques
 ### Rule Based Classification
-A rule based classification has been used to classify the user search queries into different types of searches. The search phrase is scanned both fully and token-wise for keywords and based on the keywords present, different rules are applied.
+A rule based classification has been used to classify the user search queries into different types of searches. The input query string is processed both fully and token-wise for keywords and, different rules are applied based on the keywords present.
 
-Eg: If the phrase contains a number, do a range query and sort the result by visits and return the best matching number of songs equal to the given number
+Eg: If the input query string contains a number, do a range query and sort the result by visits and return the best matching number of songs equal to the given number.
 
 ### Boosting
 Boosting technique is used as the main query optimization technique. Based on the keywords present in the search phrase, each field of a search is boosted by a certain value.
