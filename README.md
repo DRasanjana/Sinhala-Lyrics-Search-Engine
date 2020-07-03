@@ -15,24 +15,24 @@ PUT sinhala_songs
     },
     "analysis": {
       "analyzer": {
-        "names-analyser-si": {
-          "type": "custom",
-          "tokenizer": "icu_tokenizer",
-          "char_filter": ["char_filter"],
-          "filter": ["auto_complete"]
-        },
-        "sinhala-lyric-analyser": {
-          "type": "custom",
-          "tokenizer": "icu_tokenizer"
-        },
         "sinhala-name-analyser": {
           "type": "custom",
           "tokenizer": "icu_tokenizer",
-          "char_filter": ["char_filter"]
+          "char_filter": ["punctuation_filter"],
+          "filter": ["auto-complete"]
+        },
+        "sinhala-lyrics-analyser": {
+          "type": "custom",
+          "tokenizer": "icu_tokenizer"
+        },
+        "sin-names-search-analyser": {
+          "type": "custom",
+          "tokenizer": "icu_tokenizer",
+          "char_filter": ["punctuation_filter"]
         }
       },
       "char_filter": {
-        "char_filter": {
+        "punctuation_filter": {
           "type": "mapping",
           "mappings": [
             ".=>\\u0020",
@@ -46,7 +46,7 @@ PUT sinhala_songs
         }
       },
       "filter": {
-        "auto_complete": {
+        "auto-complete": {
           "type": "edge_ngram",
           "min_gram": "2",
           "max_gram": "10"
@@ -61,28 +61,28 @@ PUT sinhala_songs
       },
       "title": {
         "type": "search_as_you_type",
-        "analyzer": "names-analyser-si",
-        "search_analyzer": "sinhala-name-analyser"
+        "analyzer": "sinhala-name-analyser",
+        "search_analyzer": "sin-names-search-analyser"
       },
       "artist": {
         "type": "search_as_you_type",
-        "analyzer": "names-analyser-si",
-        "search_analyzer": "sinhala-name-analyser"
+        "analyzer": "sinhala-name-analyser",
+        "search_analyzer": "sin-names-search-analyser"
       },
       "genre": {
         "type": "search_as_you_type",
-        "analyzer": "names-analyser-si",
-        "search_analyzer": "sinhala-name-analyser"
+        "analyzer": "sinhala-name-analyser",
+        "search_analyzer": "sin-names-search-analyser"
       },
       "writer": {
         "type": "search_as_you_type",
-        "analyzer": "names-analyser-si",
-        "search_analyzer": "sinhala-name-analyser"
+        "analyzer": "sinhala-name-analyser",
+        "search_analyzer": "sin-names-search-analyser"
       },
       "music": {
         "type": "search_as_you_type",
-        "analyzer": "names-analyser-si",
-        "search_analyzer": "sinhala-name-analyser"
+        "analyzer": "sinhala-name-analyser",
+        "search_analyzer": "sin-names-search-analyser"
       },
       "visits": {
         "type": "integer",
@@ -90,7 +90,7 @@ PUT sinhala_songs
       },
       "lyrics": {
         "type": "search_as_you_type",
-        "analyzer": "sinhala-lyric-analyser"
+        "analyzer": "sinhala-lyrics-analyser"
       }
     }
   }
@@ -137,6 +137,6 @@ A rule based classification has been used to classify the user search queries in
 Eg: If the phrase contains a number, do a range query and sort the result by visits and return the best matching number of songs equal to the given number
 
 ### Boosting
-Boosting has been used as the main query optimization technique. Each field of a search is boosted by a certain value based on the keywords present in the search phrase.
+Boosting technique is used as the main query optimization technique. Based on the keywords present in the search phrase, each field of a search is boosted by a certain value.
 
 Eg: If the phrase contains the word “ලියූ" boost the writer field
