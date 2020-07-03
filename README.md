@@ -18,22 +18,21 @@ PUT sinhala_songs
         "names-analyser-si": {
           "type": "custom",
           "tokenizer": "icu_tokenizer",
-          "char_filter": ["punctuation_char_filter"],
-          "filter": ["edge_n_gram_filter"]
+          "char_filter": ["char_filter"],
+          "filter": ["auto_complete"]
         },
-        "lyrics-analyser-si": {
+        "sinhala-lyric-analyser": {
           "type": "custom",
           "tokenizer": "icu_tokenizer"
         },
-        "names-search-analyser-si": {
+        "sinhala-name-analyser": {
           "type": "custom",
           "tokenizer": "icu_tokenizer",
-          "char_filter": ["punctuation_char_filter"],
-          "filter": ["sinhala_stop_filter"]
+          "char_filter": ["char_filter"]
         }
       },
       "char_filter": {
-        "punctuation_char_filter": {
+        "char_filter": {
           "type": "mapping",
           "mappings": [
             ".=>\\u0020",
@@ -47,25 +46,10 @@ PUT sinhala_songs
         }
       },
       "filter": {
-        "edge_n_gram_filter": {
+        "auto_complete": {
           "type": "edge_ngram",
           "min_gram": "2",
           "max_gram": "10"
-        },
-        "sinhala_stop_filter": {
-          "type": "stop",
-          "stopwords": [
-            "සහ",
-            "හා",
-            "වැනි",
-            "සේ",
-            "මෙන්",
-            "සමග",
-            "කල",
-            "කළ",
-            "කරපු",
-            "කරන"
-          ]
         }
       }
     }
@@ -78,27 +62,27 @@ PUT sinhala_songs
       "title": {
         "type": "search_as_you_type",
         "analyzer": "names-analyser-si",
-        "search_analyzer": "names-search-analyser-si"
+        "search_analyzer": "sinhala-name-analyser"
       },
       "artist": {
         "type": "search_as_you_type",
         "analyzer": "names-analyser-si",
-        "search_analyzer": "names-search-analyser-si"
+        "search_analyzer": "sinhala-name-analyser"
       },
       "genre": {
         "type": "search_as_you_type",
         "analyzer": "names-analyser-si",
-        "search_analyzer": "names-search-analyser-si"
+        "search_analyzer": "sinhala-name-analyser"
       },
       "writer": {
         "type": "search_as_you_type",
         "analyzer": "names-analyser-si",
-        "search_analyzer": "names-search-analyser-si"
+        "search_analyzer": "sinhala-name-analyser"
       },
       "music": {
         "type": "search_as_you_type",
         "analyzer": "names-analyser-si",
-        "search_analyzer": "names-search-analyser-si"
+        "search_analyzer": "sinhala-name-analyser"
       },
       "visits": {
         "type": "integer",
@@ -106,7 +90,7 @@ PUT sinhala_songs
       },
       "lyrics": {
         "type": "search_as_you_type",
-        "analyzer": "lyrics-analyser-si"
+        "analyzer": "sinhala-lyric-analyser"
       }
     }
   }
@@ -127,18 +111,18 @@ The major capabilites of the engine are listed below.<br>
   - Search songs in a definite range.<br>
   Eg: අමරදේව ගැයූ හොදම සින්දු 10 – The search result is sorted based on the number of visits per each song and the best 10 songs are returned. <br>
   - Search phrases support synonyms of the keywords. <br>
-  Eg:- Presence of any word out of'ගායකයා','ගයනවා','ගායනා','ගායනා','ගැයු','ගයන' , identifies the search as a search for an artist.
+  Eg:- Presence of any word out of'ගායකයා','ගයනවා','ගායනා','ගායනා','ගැයු','ගයන' , identifies the search as a search for an artist.<br><br>
 Screen shots of the user interface are put in the ```image``` folder
 
 ## Structure of the Data
 Each song contains the following data metadata.
-  1. title - name ofthe song
-  2. artist - singer of the sonh
-  3. genre - list contains genres
-  4. writer - composer of the somg
-  5. music - musician of the song
-  6. visits - no of visits for the song in original site
-  7. lyrics - lyric (each line seperated by a \n character)<br>
+    1. title - name ofthe song
+    2. artist - singer of the sonh
+    3. genre - list contains genres
+    4. writer - composer of the somg
+    5. music - musician of the song
+    6. visits - no of visits for the song in original site
+    7. lyrics - lyric (each line seperated by a \n character)<br><br>
 Data is scraped from the [https://sinhalasongbook.com/](https://sinhalasongbook.com/) site for educational purposes and all the English metadata fields were translated to Sinhala using the Google Translate API and mtranslate python library.
 
 ## Indexing and Querying Techniques
