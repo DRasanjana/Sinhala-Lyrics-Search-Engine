@@ -102,7 +102,7 @@ Without creating a custom index, we can build a default index settings. However,
 If you use default indexing settings, use command  ```node data.js``` to run data.js file. <br>
 
 ### Running the Project
-1. Run the node command ```node index.js```(make sure you have installed [nodejs](https://nodejs.org/en/download/)<br>
+1. Run the node command ```node index.js```(make sure you have installed [nodejs](https://nodejs.org/en/download/) in your computer)<br>
 2. Visit [http://localhost:3001]( http://localhost:3001) and start searching.
 
 ## Main Functionalities
