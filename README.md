@@ -119,9 +119,10 @@ PUT sinhala_songs
 ## Main Functionalities
 The major capabilites of the engine are listed below.<br>
   - Search songs by entering any word of the song.<br>
-  Eg: 
+  Eg: අම්මා - The searc result shows all songs that contains the word අම්මා<br>
   - Search songs based on artist or writer or musician.<br>
-  Eg: සුනිල් ආරියරත්න ලියූ සින්දු – The search result shows all songs written by <br>
+  Eg: අමරදේව ගැයූ සිංදු - The searc result shows all songs sang by W.D. අමරදේව <br> 
+    සුනිල් ආරියරත්න ලියූ සින්දු – The search result shows all songs written by <br>
   - Search songs in a definite range.<br>
   Eg: සුනිල් ආරියරත්න ලියූ හොදම සින්දු 10 – The search result is sorted based on the number of visits per each song and the best 10 songs are returned. <br>
   - Search phrases support synonyms of the keywords. <br>
