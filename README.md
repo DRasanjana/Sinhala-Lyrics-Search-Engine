@@ -116,12 +116,12 @@ Screen shots of the user interface are put in the ```image``` folder
 
 ## Structure of the Data
 Each song contains the following data metadata.
-    1. title - name ofthe song
-    2. artist - singer of the sonh
-    3. genre - list contains genres
-    4. writer - composer of the somg
-    5. music - musician of the song
-    6. visits - no of visits for the song in original site
+    1. title - name ofthe song <br>
+    2. artist - singer of the sonh <br>
+    3. genre - list contains genres <br>
+    4. writer - composer of the somg <br>
+    5. music - musician of the song <br>
+    6. visits - no of visits for the song in original site <br>
     7. lyrics - lyric (each line seperated by a \n character)<br><br>
 Data is scraped from the [https://sinhalasongbook.com/](https://sinhalasongbook.com/) site for educational purposes and all the English metadata fields were translated to Sinhala using the Google Translate API and mtranslate python library.
 
