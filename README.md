@@ -117,7 +117,7 @@ The major capabilites of the engine are listed below.<br>
   Eg: වික්ටර් රත්නායක සංගීතවත් කල සිංදු හොදම 10 – The search result is sorted based on the number of visits per each song and the best 10 songs are returned. <br>
   - Search phrases support synonyms of the keywords. <br>
   Eg:- Presence of any word out of  'ලියූ', 'ලිව්ව', 'ලිව්', 'රචනා', 'ලියා ඇති', 'රචිත', 'හැදුව', 'ලියන', 'ලියන්න', 'ලීව', 'ලියපු', 'ලියා ඇත', 'ලිඛිත', identifies the search as a search for a writer.<br><br>
-Screen shots of the user interface are put in the ```image``` folder
+Screen shots of the user interface are put in the [```image```](https://github.com/DRasanjana/Sinhala-Lyrics-Search-Engine/tree/master/images) folder
 
 ## Structure of the Data
 Each song contains the following data metadata. <br>
