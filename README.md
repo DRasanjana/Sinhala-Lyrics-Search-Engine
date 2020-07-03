@@ -111,10 +111,10 @@ The major capabilites of the engine are listed below.<br>
   Eg: අම්මා - The search result shows all songs that contains the word අම්මා<br>
   - Search songs based on artist or writer or musician.<br>
   Eg: අමරදේව ගැයූ සිංදු - The searc result shows all songs sang by W.D. අමරදේව <br> 
-      සුනිල් ආරියරත්න ලියූ සින්දු – The search result shows all songs written by සුනිල් ආරියරත්න <br>
+      රත්න ශ්‍රී විජේසිං ලියූ සිංදු – The search result shows all songs written by රත්න ශ්‍රී විජේසිං <br>
       වික්ටර් රත්නායක සංගීතවත් කල සිංදු - The search result shows all songs composed music by වික්ටර් රත්නායක<br>
   - Search songs in a definite range.<br>
-  Eg: අමරදේව ගැයූ හොදම සින්දු 10 – The search result is sorted based on the number of visits per each song and the best 10 songs are returned. <br>
+  Eg: වික්ටර් රත්නායක සංගීතවත් කල සිංදු හොදම 10 – The search result is sorted based on the number of visits per each song and the best 10 songs are returned. <br>
   - Search phrases support synonyms of the keywords. <br>
   Eg:- Presence of any word out of  'ලියූ', 'ලිව්ව', 'ලිව්', 'රචනා', 'ලියා ඇති', 'රචිත', 'හැදුව', 'ලියන', 'ලියන්න', 'ලීව', 'ලියපු', 'ලියා ඇත', 'ලිඛිත', identifies the search as a search for a writer.<br><br>
 Screen shots of the user interface are put in the ```image``` folder
