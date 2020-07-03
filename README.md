@@ -126,3 +126,25 @@ The major capabilites of the engine are listed below.<br>
   Eg: සුනිල් ආරියරත්න ලියූ හොදම සින්දු 10 – The search result is sorted based on the number of visits per each song and the best 10 songs are returned. <br>
   - Search phrases support synonyms of the keywords. <br>
   Eg:- Presence of any word out of'ගායකයා','ගයනවා','ගායනා','ගායනා','ගැයු','ගයන' , identifies the search as a search for an artist.
+
+## Structure of the Data
+Each song contains the following data metadata.
+  1. title
+  2. artist
+  3. genre 
+  4. writer
+  5. music
+  6. visits
+  7. lyrics
+ Data is scraped from the [https://sinhalasongbook.com/](https://sinhalasongbook.com/) site for educational purposes and all the English metadata fields were translated to Sinhala using the Google Translate API and mtranslate python library.
+
+## Indexing and Querying Techniques
+### Rule Based Classification
+A rule based classification has been used to classify the user search queries into different types of searches. The search phrase is scanned both fully and token-wise for keywords and based on the keywords present, different rules are applied.
+
+Eg: If the phrase contains a number, do a range query and sort the result by visits and return the best matching number of songs equal to the given number
+
+### Boosting
+Boosting has been used as the main query optimization technique. Each field of a search is boosted by a certain value based on the keywords present in the search phrase.
+
+Eg: If the phrase contains the word “ගැයූ" boost the writer field
