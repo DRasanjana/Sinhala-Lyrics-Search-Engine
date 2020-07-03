@@ -135,7 +135,7 @@ Each song contains the following data metadata.
   4. writer
   5. music
   6. visits
-  7. lyrics
+  7. lyrics <br>
  Data is scraped from the [https://sinhalasongbook.com/](https://sinhalasongbook.com/) site for educational purposes and all the English metadata fields were translated to Sinhala using the Google Translate API and mtranslate python library.
 
 ## Indexing and Querying Techniques
