@@ -128,6 +128,7 @@ The major capabilites of the engine are listed below.<br>
   Eg: අමරදේව ගැයූ හොදම සින්දු 10 – The search result is sorted based on the number of visits per each song and the best 10 songs are returned. <br>
   - Search phrases support synonyms of the keywords. <br>
   Eg:- Presence of any word out of'ගායකයා','ගයනවා','ගායනා','ගායනා','ගැයු','ගයන' , identifies the search as a search for an artist.
+Screen shots of the user interface are put in the ```image``` folder
 
 ## Structure of the Data
 Each song contains the following data metadata.
@@ -138,7 +139,7 @@ Each song contains the following data metadata.
   5. music - musician of the song
   6. visits - no of visits for the song in original site
   7. lyrics - lyric (each line seperated by a \n character)<br>
- Data is scraped from the [https://sinhalasongbook.com/](https://sinhalasongbook.com/) site for educational purposes and all the English metadata fields were translated to Sinhala using the Google Translate API and mtranslate python library.
+Data is scraped from the [https://sinhalasongbook.com/](https://sinhalasongbook.com/) site for educational purposes and all the English metadata fields were translated to Sinhala using the Google Translate API and mtranslate python library.
 
 ## Indexing and Querying Techniques
 ### Rule Based Classification
