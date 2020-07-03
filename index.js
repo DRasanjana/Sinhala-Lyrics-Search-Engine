@@ -41,90 +41,92 @@ app.get('/', function (req, res) {
 app.get('/search', function (req, res) {
 
     let body = '';
-    is_title = true;
-    is_artist = false;
-    is_lyrics = false;
-    is_writer = false;
-    is_music = false;
-    is_genre = false;
     new_query = " ";
-    fields_list = [];
     output_size = -1;
+    fields_list = [];
+    boost_title = true;
+    boost_artist = false;
+    boost_genre = false;
+    boost_writer = false;
+    boost_music = false;
+    boost_lyrics = false;
+    
+    var input_list = req.query.q.split(' ').map(item => item.trim());
 
-    var inputlist = req.query.q.split(' ').map(item => item.trim());
-    console.log(inputlist);
-
-    movie_list = ['චිත්‍රපට', 'සිනමා']
-    music_keywords = ['සංගීතමය', 'සංගීතවත්', 'අධ්‍යක්ෂණය', 'සංගීත']
-    genre_keywords = ['පැරණි', 'පොප්ස්', 'පොප්', 'පරණ', 'ක්ලැසික්', 'ක්ලැසි', 'ඉල්ලීම', 'චිත්‍රපට', 'නව']
-    artist_keywords = ['කීව', 'කී', 'ගායනා කරන', 'ගයන', 'ගායනා', '‌ගේ', 'හඩින්', 'කියනා', 'කිව්ව', 'කිව්', 'කිව', 'ගායනය',
+    movie_related = ['චිත්‍රපට', 'සිනමා']
+    artist_related = ['කීව', 'කී', 'ගායනා කරන', 'ගයන', 'ගායනා', '‌ගේ', 'හඩින්', 'කියනා', 'කිව්ව', 'කිව්', 'කිව', 'ගායනය',
                    'ගායනා කළා', 'ගායනා කල', 'ගැයූ']
-    writer_keywords = ['ලියා', 'ලියූ', 'ලිව්ව', 'ලිව්', 'රචනා', 'ලියා ඇති', 'රචිත', 'ලියන ලද', 'ලියන', 'හදපු', 'පද',
-                    'රචනය', 'හැදූ', 'හැදුව', 'ලියන', 'ලියන්න', 'ලීව', 'ලියපු', 'ලියා ඇත', 'ලිඛිත']
+    genre_related = ['පැරණි', 'පොප්ස්', 'පොප්', 'පරණ', 'ක්ලැසික්', 'ක්ලැසි', 'ඉල්ලීම', 'චිත්‍රපට', 'නව']
+    writer_related = ['ලියා', 'ලියූ', 'ලිව්ව', 'ලිව්', 'රචනා', 'ලියා ඇති', 'රචිත', 'ලියන ලද', 'ලියන', 'හදපු', 'පද',
+    'රචනය', 'හැදූ', 'හැදුව', 'ලියන', 'ලියන්න', 'ලීව', 'ලියපු', 'ලියා ඇත', 'ලිඛිත']
+    music_related = ['සංගීතමය', 'සංගීතවත්', 'අධ්‍යක්ෂණය', 'සංගීත']
+    
     is_popular_query = false
-    var quality_list = ['හොඳම', 'හොදම', 'ප්‍රසිද්ධ', 'ප්‍රසිද්ධම', 'ජනප්‍රිය', 'ජනප්‍රියතම', 'ඉස්තරම්', 'ඉස්තරම්ම', 'සුපිරි', 'සුපිරිම', 'පට්ට', 'මරු', 'ප්‍රචලිත'];
+    var popular_list = ['හොඳම', 'හොදම', 'ප්‍රසිද්ධ', 'ප්‍රසිද්ධම', 'ජනප්‍රිය', 'ජනප්‍රියතම', 'ඉස්තරම්', 'ඉස්තරම්ම', 'සුපිරි', 'සුපිරිම', 'පට්ට', 'මරු', 'ප්‍රචලිත'];
 
-    inputlist.forEach(element => {
-        if(music_keywords.includes(element)){
-            is_music = true;
+    input_list.forEach(element => {
+        if(music_related.includes(element)){
+            boost_music = true;
         }
-        else if (genre_keywords.includes(element)){
-            is_genre = true;
+        else if (genre_related.includes(element)){
+            boost_genre = true;
         }
-        else if( quality_list.includes(element)){
+        else if( popular_list.includes(element)){
             is_popular_query = true;
         }
-        else if(writer_keywords.includes(element)){
-            is_writer = true;
+        else if(writer_related.includes(element)){
+            boost_writer = true;
         }
         else if (!isNaN(element)){
             output_size= element;
 
         }
-        else{    new_query = new_query + element + " "}  
+        else{    
+            new_query = new_query + element + " "
+        }  
     });
-    console.log(new_query)
+   
     input_query = new_query
     
-    d_title = "title*";
-    d_artist = "artist*";
-    d_lyrics = "lyrics*";
-    d_writer = "writer*";
-    d_music = "music*";
-    d_genre = "genre";
-
-    if (d_writer || d_artist || d_music || d_genre){
-        is_title = false
+    f_title = "title*";
+    f_genre = "genre";
+    f_artist = "artist*";
+    f_writer = "writer*";
+    f_music = "music*";
+    f_lyrics = "lyrics*";
+    
+    if (f_writer || f_artist || f_music || f_genre){
+        boost_title = false
     }
-    if (is_music){
+    if (boost_music){
         if (is_popular_query)
-            fields_list.push(d_music);
+            fields_list.push(f_music);
         else
-            d_music += "^4";
+            f_music += "^4";
         }
-    if (is_artist){
+    if (boost_artist){
         if (is_popular_query)
-            fields_list.push(d_artist);
+            fields_list.push(f_artist);
         else
-            d_artist += "^4";
+            f_artist += "^4";
         }
-    if (is_writer){
+    if (boost_writer){
         if (is_popular_query)
-            fields_list.push(d_writer);
+            fields_list.push(f_writer);
         else
-            d_writer += "^4";
+            f_writer += "^4";
         }
-    if (is_genre){
+    if (boost_genre){
         if (is_popular_query)
-            fields_list.push(d_genre)
+            fields_list.push(f_genre)
         else
-            d_genre += "^4"
+            f_genre += "^4"
         }
-    if (is_title){
+    if (boost_title){
         if (is_popular_query)
-            fields_list.push(d_title);
+            fields_list.push(f_title);
         else
-            d_title += "^4";
+            f_title += "^4";
     }
     if (is_popular_query){
         if (output_size == -1)
@@ -165,7 +167,7 @@ app.get('/search', function (req, res) {
         }
     }
     else{
-        fields_list = [d_title, d_artist, d_lyrics, d_writer, d_music, d_genre]
+        fields_list = [f_title, f_artist, f_lyrics, f_writer, f_music, f_genre]
         body = {
             "query": {
                 "query_string": {
