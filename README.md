@@ -4,7 +4,7 @@
 1. Download [Elasticsearch](https://www.elastic.co/downloads/elasticsearch) and run on the port 9200.<br>
 2. Download [Kibana](https://www.elastic.co/downloads/kibana) (optional) and run on the port 5601 for below query operations.<br>
 ###  Setting Up Index
-1. Create index named ```sinhala_songs``` and run following code in the Kibana console.<br>
+1. Create an index named ```sinhala_songs``` and run following code in the Kibana console.<br>
 ```
 PUT sinhala_songs
 {
