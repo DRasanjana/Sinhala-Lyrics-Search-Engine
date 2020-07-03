@@ -115,7 +115,7 @@ The major capabilites of the engine are listed below.<br>
 Screen shots of the user interface are put in the ```image``` folder
 
 ## Structure of the Data
-Each song contains the following data metadata.
+Each song contains the following data metadata. <br>
     1. title - name ofthe song <br>
     2. artist - singer of the sonh <br>
     3. genre - list contains genres <br>
