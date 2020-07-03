@@ -96,8 +96,13 @@ PUT sinhala_songs
   }
 }
 ```
+2. Download [sinhala_songs.json](https://github.com/DRasanjana/Sinhala-Lyrics-Search-Engine/blob/master/sinhala_songs.json) and add documents to the created index using the Bulk API.
+
+Without creating a custom index, we can build a default index settings. However, creating custom index as mentioned before is more effective. <br>
+If you use default indexing settings, use command  ```node data.js``` to run data.js file. <br>
+
 ### Running the Project
-1. Run node commands ```node data.js``` and ```node index.js```<br>
+1. Run the node command ```node index.js```<br>
 2. Visit [http://localhost:3001]( http://localhost:3001) and start searching.
 
 ## Main Functionalities
@@ -117,7 +122,7 @@ Screen shots of the user interface are put in the ```image``` folder
 ## Structure of the Data
 Each song contains the following data metadata. <br>
     1. title - name ofthe song <br>
-    2. artist - singer of the sonh <br>
+    2. artist - singer of the song <br>
     3. genre - list contains genres <br>
     4. writer - composer of the somg <br>
     5. music - musician of the song <br>
@@ -125,7 +130,7 @@ Each song contains the following data metadata. <br>
     7. lyrics - lyric (each line seperated by a \n character)<br><br>
 Data is scraped from the [https://sinhalasongbook.com/](https://sinhalasongbook.com/) site for educational purposes and all the English metadata fields were translated to Sinhala using the Google Translate API and mtranslate python library.
 
-## Indexing and Querying Techniques
+## Querying Techniques
 ### Rule Based Classification
 A rule based classification has been used to classify the user search queries into different types of searches. The search phrase is scanned both fully and token-wise for keywords and based on the keywords present, different rules are applied.
 
