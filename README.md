@@ -116,7 +116,7 @@ The major capabilites of the engine are listed below.<br>
   - Search songs in a definite range.<br>
   Eg: අමරදේව ගැයූ හොදම සින්දු 10 – The search result is sorted based on the number of visits per each song and the best 10 songs are returned. <br>
   - Search phrases support synonyms of the keywords. <br>
-  Eg:- Presence of any word out of'ගායකයා','ගයනවා','ගායනා','ගායනා','ගැයු','ගයන' , identifies the search as a search for an artist.<br><br>
+  Eg:- Presence of any word out of  'ලියූ', 'ලිව්ව', 'ලිව්', 'රචනා', 'ලියා ඇති', 'රචිත', 'හැදුව', 'ලියන', 'ලියන්න', 'ලීව', 'ලියපු', 'ලියා ඇත', 'ලිඛිත', identifies the search as a search for a writer.<br><br>
 Screen shots of the user interface are put in the ```image``` folder
 
 ## Structure of the Data
